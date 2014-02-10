@@ -64,4 +64,17 @@ describe Bigcommerce::Api do
       api.destroy_products!
     end
   end
+  
+  describe "#create-products-sku" do
+    it "should accept an option id parameter" do
+      api.connection.should_receive(:post).once.with("/products/123/skus", {})
+      api.create_products_sku(123)
+    end
+
+    it "should accept an option id parameter and an options hash" do
+      options = Hash[*('A'..'Z').to_a.flatten]
+      api.connection.should_receive(:post).once.with("/products/123/skus", options)
+      api.create_products_sku(123, options)
+    end
+  end
 end
