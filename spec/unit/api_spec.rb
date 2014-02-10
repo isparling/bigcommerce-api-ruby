@@ -57,4 +57,11 @@ describe Bigcommerce::Api do
       api.create_products_customfield(123, options)
     end
   end
+  
+  describe "#destroy-products!" do
+    it "should accept no parameters" do
+      api.connection.should_receive(:delete).once
+      api.destroy_products!
+    end
+  end
 end

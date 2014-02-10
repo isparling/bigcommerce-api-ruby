@@ -303,6 +303,10 @@ module Bigcommerce
     def product(id,options={})
       @connection.get("/products/#{id}", options)
     end
+    
+    def destroy_products!
+      @connection.delete('/products')
+    end
 
     def create_products(options={})
       @connection.post('/products', options)
