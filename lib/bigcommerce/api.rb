@@ -347,6 +347,10 @@ module Bigcommerce
     def products_customfield(product_id, custom_field_id, options={})
       @connection.get("/products/#{product_id}/customfields/#{custom_field_id}", options)
     end
+    
+    def create_products_customfield(product_id, options={})
+      @connection.post("/products/#{product_id}/customfields", options)
+    end
 
     def product_images(product_id, options={})
       @connection.get("/products/#{product_id}/images", options)

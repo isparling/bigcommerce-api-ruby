@@ -45,5 +45,16 @@ describe Bigcommerce::Api do
       api.options_value(123, options)
     end
   end
-
+  
+  describe "#create-product-customfields" do
+    it "should accept a product-id parameter" do
+      api.connection.should_receive(:post).once.with("/products/123/customfields", {})
+      api.create_products_customfield(123)
+    end
+    it "should accept an option id parameter and an options hash" do
+      options = Hash[*('A'..'Z').to_a.flatten]
+      api.connection.should_receive(:post).once.with("/products/123/customfields", options)
+      api.create_products_customfield(123, options)
+    end
+  end
 end
